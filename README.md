@@ -1,6 +1,6 @@
 # docker-script-watcher-files
 Monitora mudanças nos arquivo do projeto e criar o container automaticamente 
-
+```sh
 #!/bin/bash
 
 #instale o  inotify-tools para esse script funcionar
@@ -21,3 +21,4 @@ inotifywait -m  $dir -e create -e moved_to -e close_write |
         docker build -t $imagename .
         docker run  -i  $imagename  &
     done
+```

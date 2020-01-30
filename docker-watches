@@ -6,6 +6,9 @@ imagename=test/haraka
 paramrun=" -p 25:25" 
 dir="./config ./helpers ./plugins ./"
 
+docker build -t $imagename .
+docker run  -i  $imagename  &
+
 inotifywait -m  $dir -e create -e moved_to -e close_write |
     while read path action file; do
         idImage=$(docker ps -q --filter ancestor=${imagename})
